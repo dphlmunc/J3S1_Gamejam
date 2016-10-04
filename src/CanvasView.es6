@@ -5,7 +5,5 @@ class CanvasView{
     }
 
 
-
-
 }
 module.exports = CanvasView;

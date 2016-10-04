@@ -17,7 +17,6 @@ class KeyView{
             left: e.keyCode ===  37 ? true : false,
             right: e.keyCode === 39 ? true : false
 
-
         };
         this.keyListener(keys);
     }
