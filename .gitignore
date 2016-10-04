@@ -1,0 +1,6 @@
+node_modules
+.idea
+*.iml
+npm_debug.log*
+
+.gitignore
