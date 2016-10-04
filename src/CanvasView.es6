@@ -5,5 +5,7 @@ class CanvasView{
     }
 
 
+
+
 }
-module.export = CanvasView;
+modules.export = CanvasView;
