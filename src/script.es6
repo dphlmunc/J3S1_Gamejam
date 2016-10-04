@@ -1,38 +1,45 @@
-const KeyView = require("./KeyView.es6");
+const KeyView = require("./keyview.es6");
 const CanvasView = require("./CanvasView.es6");
 const PlayerModel = require("./PlayerModel.es6");
-const Particles = require("./Particles.es6");
-
-
+const Particle = require("./Particles.es6");
 class Controller{
     constructor(){
+        this.particles = [];
         this.key = new KeyView();
-        this._cnv = new CanvasView();
-        this._ply = new PlayerModel();
+        this.view = new CanvasView();
+        //this.loop();
+        this.loop = this.loop.bind(this);
         this.key.setListener(this.playerUpdate);
+
+
     }
 
     playerUpdate(keys){
-       console.log(keys);
+        console.log(keys);
 
+    }
+
+    loop(){
+        this.particles.push(new Particle(this.view.w / 2, this.view.h / 2));
+        console.log(this.particles.length);
+        this.particles.forEach( (p) => {
+            p.move();
+
+            this.view.draw(p.location, p.hue);
+        });
+
+        requestAnimationFrame(this.loop);
+
+
+
+        this.particles = this.particles.filter((particle) => {
+            return particle.isDead == false;
+        });
 
     }
 
 }
-
-function draw(){
-    ctx.clearRect;
-    ctx.fillStyle ="red";
-    ctx.fillRect(100,100,100,100);
-    ctx.stroke();
-    p = new Particle();
-
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const c = new Controller();
-
-
+document.addEventListener("DOMContentLoaded", ()=>{
+    const controller = new Controller();
+    controller.loop();
 });
-draw();
