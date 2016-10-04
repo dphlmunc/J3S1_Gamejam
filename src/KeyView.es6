@@ -5,13 +5,10 @@ class KeyView{
     }; // Om te verkomen dat "this " naar window verwijst ipv object
     this.keyListener = null;
     }
-
-
     setListener(callback){
         this.keyListener = callback;
 
     }
-
     keyPressed(e){
         const keys = {
             left: e.keyCode ===  37 ? true : false,

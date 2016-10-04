@@ -1,24 +1,3 @@
-const draw = require("./CanvasView.es6");
-class Particles {
-    constructor(rad = 40) {
-        this.radius = rad;
-        this.x = 0;
-        this.y = 0;
-        this.color = randomColor();
-        this.xVelocity = 0;
-        this.yVelocity = 0;
-        this.c = document.getElementById("cnv");
-        this.ctx = c.getContext("2d");
-        this.c.width = window.innerWidth;
-        this.c.height = window.outerHeight;
-
-    }
-
-
-}
-
-//Vanaf hier
-
 const View = require("./CanvasView.es6");
 class Particle {
     constructor(x,y) {
@@ -27,15 +6,13 @@ class Particle {
         this.speed = 4;
         this.ySpeed = Math.random();
         this.xSpeed = (Math.random() * 6) -2;
-        this.gravity = -0.7;
+        this.gravity = -0.5;
         this.isDead = false;
         this.age = 0;
         this.view = new View();
         this.hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
         this.canvas= this.view.canvas;
-
     }
-
 
     move(){
         this.speed += this.ySpeed;
@@ -49,7 +26,7 @@ class Particle {
             this.speed *= this.gravity;
         }
         if ((this.x < 0 )||( this.x >= this.canvas.width) ||( this.age >= 500)) {
-            console.log("kill me!");
+            console.log("Gone!");
             this.isDead = true;
         }
 
@@ -64,9 +41,3 @@ class Particle {
 
 module.exports = Particle;
 
-
-
-
-
-
-module.exports = Particles;
