@@ -8,4 +8,4 @@ class CanvasView{
 
 
 }
-modules.export = CanvasView;
+module.exports = CanvasView;

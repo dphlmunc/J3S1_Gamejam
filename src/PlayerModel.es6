@@ -6,4 +6,4 @@ class PlayerModel{
 
 
 }
-module.export = PlayerModel;
+module.exports = PlayerModel;
